@@ -23,7 +23,7 @@ git ls-files -s | Select-String '^120000' | ConvertFrom-String -PropertyNames Ge
     New-Item -ItemType Junction -Name $symlink -Value $src
   } else {
     Write-Error "error: git-rm-symlink: Not a valid source: $symlink =/=> $src"
-    # return
+    return
   }
 
   git update-index --assume-unchanged $symlink
